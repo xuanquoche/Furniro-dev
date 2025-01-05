@@ -1,6 +1,8 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
+  darkMode: ["class"],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,10 +11,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        "button-background": "var(--buton-background)",
+        "text-gray": "var(--text-gray)",
+        "discount-background": "var(--discount-background)",
+        "new-product": "var(--new-product)",
+        "text-product-name": "var(--text-product-name)",
+        "text-sort-description": "var(--text-sort-description)",
+        "text-discount-price": "var(--text-discount-price)",
+        "banner-background": "var(--banner-background)",
+        "text-treating": "var(--text-treating)",
+        "text-category": "var(--text-category)",
+        "filter-background": "var(--filter-background)",
+      },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
     },
   },
-  plugins: [],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;
