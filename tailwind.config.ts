@@ -24,6 +24,11 @@ export default {
         "text-treating": "var(--text-treating)",
         "text-category": "var(--text-category)",
         "filter-background": "var(--filter-background)",
+        error: "var(--error)",
+        gray: {
+          300: "var(--gray-300)",
+          400: "var(--gray-400)",
+        },
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

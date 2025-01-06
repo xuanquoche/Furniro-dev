@@ -14,6 +14,9 @@
   --text-treating: #666666;
   --text-category: #333333;
   --filter-background: #f9f1e7;
+  --error: #dc2626;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
 }
 
 body {

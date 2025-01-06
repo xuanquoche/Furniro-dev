@@ -1,6 +1,7 @@
 import Providers from "@/components/layout/provider";
 import "./globals.css";
 import { getSession } from "@/config";
+import { ToastContainer } from "react-toastify";
 
 const RootLayout = async ({
   children,
@@ -13,6 +14,7 @@ const RootLayout = async ({
     <html lang="en">
       <body>
         <Providers session={session}>{children}</Providers>
+        <ToastContainer />
       </body>
     </html>
   );
