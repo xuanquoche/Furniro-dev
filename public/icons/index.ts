@@ -1,0 +1,10 @@
+export { default as ProductIcon } from "./product-icon";
+export { default as OrderIcon } from "./order-icon";
+export { default as DashboardIcon } from "./dashboard-icon";
+export { default as CustomerIcon } from "./customers-icon";
+export { default as SellerIcon } from "./seller-icon";
+export { default as AnalyticsIcon } from "./analytics-icon";
+export { default as SearchIcon } from "./search-icon";
+export { default as FlagMenuIcon } from "./flag-menu-icon";
+export { default as NotificationIcon } from "./notification-icon";
+export { default as MailIcon } from "./mail-icon";
