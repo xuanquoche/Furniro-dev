@@ -1,2 +1,3 @@
 export * from "./routes";
-export * from "./header";
+export * from "./client-links";
+export * from "./footer";

@@ -6,7 +6,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
       <SidebarAdmin />
-      <main className="w-full h-screen overflow-hidden bg-gray-100 ">
+      <main className="w-full h-screen overflow-hidden">
         <HeaderAdmin />
         <div className="py-8 px-6">{children}</div>
       </main>
