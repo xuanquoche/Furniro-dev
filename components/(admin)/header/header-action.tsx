@@ -1,37 +1,21 @@
 "use client";
 
-import {
-  SearchIcon,
-  FlagMenuIcon,
-  NotificationIcon,
-  MailIcon,
-} from "@/public/icons";
 import { HeaderAvatar } from "./header-avatar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/custom/button";
-import { useRef, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 import { useClickOutside } from "../../../hooks/use-click-outside";
 
-const HEADERACTION = [
-  {
-    icon: SearchIcon,
-    title: "Search",
-  },
-  {
-    icon: FlagMenuIcon,
-    title: "FlagMenuIcon",
-  },
-  {
-    icon: NotificationIcon,
-    title: "NotificationIcon",
-  },
-  {
-    icon: MailIcon,
-    title: "MailIcon",
-  },
-];
+interface HeaderActionItem {
+  icon: ReactNode;
+  title: string;
+}
 
-export const HeaderAction = () => {
+interface HeaderActionProps {
+  actions: HeaderActionItem[];
+}
+
+export const HeaderAction = ({ actions }: HeaderActionProps) => {
   const [isShowInputSearch, setIsShowInputSearch] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -44,7 +28,7 @@ export const HeaderAction = () => {
 
   return (
     <div className="flex">
-      {HEADERACTION.map((item, index) => (
+      {actions.map((item, index) => (
         <div key={index} className="cursor-pointer flex items-center">
           {item.title == "Search" ? (
             <div className="flex items-center">
@@ -57,7 +41,7 @@ export const HeaderAction = () => {
                 size="sm"
                 onClick={handleShowInputSearch}
               >
-                <item.icon />
+                {item.icon}
               </Button>
             </div>
           ) : (
@@ -66,7 +50,7 @@ export const HeaderAction = () => {
               className="hover:bg-background-hover-admin hover:rounded-xl w-fit"
               size="sm"
             >
-              <item.icon />
+              {item.icon}
             </Button>
           )}
         </div>

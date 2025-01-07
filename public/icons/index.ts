@@ -9,3 +9,6 @@ export { default as FlagMenuIcon } from "./flag-menu-icon";
 export { default as NotificationIcon } from "./notification-icon";
 export { default as MailIcon } from "./mail-icon";
 export { default as SidebarIcon } from "./sidebar-icon";
+export { default as UserIcon } from "./user-icon";
+export { default as LoveIcon } from "./love-icon";
+export { default as CartIcon } from "./cart-icon";
