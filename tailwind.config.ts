@@ -26,8 +26,9 @@ export default {
         "filter-background": "var(--filter-background)",
         error: "var(--error)",
         gray: {
-          "300": "var(--gray-300)",
-          "400": "var(--gray-400)",
+          100: "var(--gray-100)",
+          300: "var(--gray-300)",
+          400: "var(--gray-400)",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -43,7 +44,11 @@ export default {
         "text-sidebar-admin": "var(--text-sidebar-admin)",
         "background-hover-admin": "var(--background-hover-admin)",
         white: "var(--white)",
-        black: "var(--black)",
+        black: {
+          DEFAULT: "var(--black)",
+          800: "var(--black-800)",
+          500: "var(--black-500)",
+        },
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

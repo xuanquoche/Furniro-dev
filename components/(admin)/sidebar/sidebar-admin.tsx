@@ -66,7 +66,7 @@ const items = [
   },
 ];
 
-export const AdminSidebar = () => {
+export const SidebarAdmin = () => {
   const [activeTab, setActiveTab] = useState<string>("");
 
   const handleClickTab = (activeTab: string) => {

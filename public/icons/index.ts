@@ -8,3 +8,4 @@ export { default as SearchIcon } from "./search-icon";
 export { default as FlagMenuIcon } from "./flag-menu-icon";
 export { default as NotificationIcon } from "./notification-icon";
 export { default as MailIcon } from "./mail-icon";
+export { default as SidebarIcon } from "./sidebar-icon";

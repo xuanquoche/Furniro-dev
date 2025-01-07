@@ -17,11 +17,14 @@
   --error: #dc2626;
   --gray-300: #d1d5db;
   --gray-400: #9ca3af;
+  --gray-100: #e0e2e7;
   --background-admin: #5c59e8;
   --text-sidebar-admin: #667085;
   --background-hover-admin: #efeffd;
   --white: #ffffff;
   --black: #000000;
+  --black-800: #1a1c21;
+  --black-500: #667085;
 
   --sidebar-background: 0 0% 98%;
   --sidebar-foreground: 240 5.3% 26.1%;
