@@ -8,7 +8,7 @@ import HeaderSide from "./header-side";
 
 const HeaderShop = () => {
   return (
-    <header className="py-2 px-6 sticky top-0 z-1000">
+    <header className="py-2 px-6 sticky top-0 z-50 left-0 right-0 bg-white">
       <div className="md:hidden">
         <SidebarTrigger />
         <div>
