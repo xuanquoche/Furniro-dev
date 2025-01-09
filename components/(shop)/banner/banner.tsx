@@ -8,8 +8,8 @@ interface BannerProps {
 
 const Banner = ({ imageUrl }: BannerProps) => {
   return (
-    <div className="h-full">
-      <div className="relative h-full">
+    <div className="h-full relative">
+      <div className="h-full">
         <Image
           src={imageUrl || BannerDefault}
           alt="banner"
