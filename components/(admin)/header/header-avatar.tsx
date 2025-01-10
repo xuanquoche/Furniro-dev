@@ -8,7 +8,7 @@ interface HeaderAvatarProps {
 
 export const HeaderAvatar = ({ src, name, role }: HeaderAvatarProps) => {
   return (
-    <div className="flex gap-3 ml-10 items-center cursor-pointer">
+    <div className="flex gap-3 md:ml-4 lg:ml-10 items-center cursor-pointer">
       <Avatar>
         <AvatarImage src={src} />
         <AvatarFallback>CN</AvatarFallback>

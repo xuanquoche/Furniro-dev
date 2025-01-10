@@ -13,7 +13,7 @@ const Range = ({
       <h2 className="text-xl md:text-3xl font-bold text-text-category">
         Browse The Range
       </h2>
-      <p className="text-lg md:text-lg font-normal text-text-treating">
+      <p className="text-md md:text-lg font-normal text-text-treating">
         {description}
       </p>
       <div className="flex gap-4">

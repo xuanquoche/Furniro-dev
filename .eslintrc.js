@@ -15,6 +15,8 @@ module.exports = {
     sourceType: "module",
   },
   rules: {
+    "prettier/prettier": ["error"],
+    "tailwindcss/classnames-order": "warn",
     "max-lines": ["error", { max: 400, skipComments: true }],
     "@typescript-eslint/camelcase": ["error", { properties: "always" }],
     "no-console": ["error", { allow: ["warn"] }],
@@ -66,4 +68,16 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": ["error", { args: "none" }],
     "@typescript-eslint/no-require-imports": "off",
   },
+  settings: {
+    tailwindcss: {
+      removeDuplicates: true,
+    },
+  },
+  "sonarjs/no-duplicate-string": "warn",
+  "lines-between-class-members": [
+    "error",
+    "always",
+    { exceptAfterSingleLine: true },
+  ],
+  "sonarjs/no-duplicate-string": "warn",
 };

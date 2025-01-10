@@ -114,7 +114,7 @@ export const SidebarAdmin = () => {
                                 {
                                   "bg-background-admin text-white rounded-xl font-semibold":
                                     activeTab == subItem.title,
-                                }
+                                },
                               )}
                             >
                               {subItem.title}
@@ -136,7 +136,7 @@ export const SidebarAdmin = () => {
                         {
                           "bg-background-admin text-white rounded-xl":
                             activeTab == item.title,
-                        }
+                        },
                       )}
                     >
                       <div className="flex items-center justify-between gap-3">
@@ -147,7 +147,7 @@ export const SidebarAdmin = () => {
                       </div>
                     </a>
                   </SidebarMenuItem>
-                )
+                ),
               )}
             </SidebarMenu>
           </SidebarGroupContent>

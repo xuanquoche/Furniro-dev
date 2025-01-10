@@ -37,7 +37,7 @@ export const HeaderAction = ({ actions }: HeaderActionProps) => {
               )}
               <Button
                 variant="ghost"
-                className="hover:bg-background-hover-admin hover:rounded-xl"
+                className="hover:bg-background-hover-admin md:px-2 lg:px-3 hover:rounded-xl"
                 size="sm"
                 onClick={handleShowInputSearch}
               >
@@ -47,7 +47,7 @@ export const HeaderAction = ({ actions }: HeaderActionProps) => {
           ) : (
             <Button
               variant="ghost"
-              className="hover:bg-background-hover-admin hover:rounded-xl w-fit"
+              className="hover:bg-background-hover-admin md:px-2 lg:px-3 hover:rounded-xl w-fit"
               size="sm"
             >
               {item.icon}
