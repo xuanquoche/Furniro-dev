@@ -1,5 +1,6 @@
 import Banner from '@/components/(shop)/banner/banner';
 import Explore from '@/components/(shop)/explore/explore';
+import Furnitor from '@/components/(shop)/furnitor/furnitor';
 import Product from '@/components/(shop)/product/product';
 import Range from '@/components/(shop)/range/range';
 
@@ -58,6 +59,13 @@ const HomePage = async () => {
                     title="50+ Beautiful rooms inspiration"
                     description="Our designer already made a lot of beautiful prototipe of rooms that inspire you"
                 />
+            </div>
+            <div className="max-w-[1440px] mx-auto my-10 hidden md:block">
+                <div className="flex justify-center items-center flex-col">
+                    <p className="text-explore font-semibold text-xl">Share your setup with</p>
+                    <h2 className="text-text-product-name font-bold text-4xl">#FuniroFurniture</h2>
+                </div>
+                <Furnitor />
             </div>
         </div>
     );
