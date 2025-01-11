@@ -15,3 +15,4 @@ export { default as CartIcon } from './cart-icon';
 export { default as CompareIcon } from './compare-icon';
 export { default as LoveIconMini } from './love-icon-mini';
 export { default as ShareIcon } from './share-icon';
+export { default as ArrowIcon } from './arrow-icon';

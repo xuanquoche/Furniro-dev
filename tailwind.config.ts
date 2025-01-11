@@ -25,6 +25,8 @@ export default {
                 'text-category': 'hsl(var(--text-category))',
                 'filter-background': 'hsl(var(--filter-background))',
                 'discount-price': 'hsl(var(--discount-price))',
+                'explore-background': 'hsl(var( --explore-background))',
+                explore: 'hsl(var(--explore))',
                 card: 'hsl(var(--card))',
                 error: 'hsl(var(--error))',
                 gray: {
