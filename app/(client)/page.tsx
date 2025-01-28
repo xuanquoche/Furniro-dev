@@ -1,3 +1,4 @@
+import { getAccount } from '@/apis/shop';
 import Banner from '@/components/(shop)/banner/banner';
 import Explore from '@/components/(shop)/explore/explore';
 import Furnitor from '@/components/(shop)/furnitor/furnitor';
@@ -5,6 +6,8 @@ import Product from '@/components/(shop)/product/product';
 import Range from '@/components/(shop)/range/range';
 
 const HomePage = async () => {
+    const res = await getAccount();
+
     return (
         <div>
             <div className="w-full h-[716px] hidden lg:block">
@@ -14,7 +17,9 @@ const HomePage = async () => {
                 <Range />
             </div>
             <div className="flex flex-col justify-center items-center">
-                <h2 className="font-bold text-xl md:text-3xl text-center text-text-category mb-5">Our Products</h2>
+                <h2 className="font-bold text-xl md:text-3xl text-center text-text-category mb-5">
+                    Our Products {res?.user?.email || 'kaka concak'}
+                </h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-[80%] gap-10 tiny:gap-5 sm:gap-4 md:gap-4 mb-10">
                     <Product
                         name="Syltherine"
