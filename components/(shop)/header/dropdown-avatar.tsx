@@ -10,17 +10,16 @@ import {
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/custom/button';
-import { AuthService } from '@/apis/auth/auth';
 import { useRouter } from 'next/navigation';
 import { ROUTES } from '@/constants';
+import { logOut } from '@/apis/auth';
 
 const DropdownAvatar = ({ children }: { children: ReactNode }) => {
     const router = useRouter();
 
     const handleSignOUt = async () => {
         try {
-            const res = await AuthService.signOut();
-            console.log('res', res);
+            const res = await logOut();
             if (res.status === 201) {
                 router.push(ROUTES.SIGN_IN);
             }

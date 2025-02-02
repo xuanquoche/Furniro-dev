@@ -7,9 +7,9 @@ import CustomFormField from './form-field';
 import { FcGoogle } from 'react-icons/fc';
 import Link from 'next/link';
 import { ROUTES } from '@/constants';
-import { AuthService } from '@/apis/auth/auth';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
+import { signUp } from '@/apis/auth';
 
 const SignUpForm = () => {
     const router = useRouter();
@@ -67,7 +67,7 @@ const SignUpForm = () => {
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         const { email, first_name, last_name, password, username } = values;
         try {
-            await AuthService.signUp({ email, first_name, last_name, password, username });
+            await signUp({ email, first_name, last_name, password, username });
 
             toast.success('Sign up Successful');
             toast.warning('Verify your email before logging in. Check your inbox for the verification link.');

@@ -5,6 +5,7 @@ export async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
     const cookieStore = await cookies();
     const accessToken = cookieStore.get('access_token')?.value || null;
+    const refreshToken = cookieStore.get('refresh_token')?.value || null;
     if (pathname === '/sign-in' && accessToken) {
         return NextResponse.redirect(new URL('/admin/dashboard', req.url));
     }
@@ -12,28 +13,42 @@ export async function middleware(req: NextRequest) {
     if (pathname.startsWith('/admin') && !accessToken) {
         return NextResponse.redirect(new URL('/sign-in', req.url));
     }
+    if (!accessToken && refreshToken) {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/refresh-token`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-refresh-token': 'true' },
+            body: JSON.stringify({ refresh_token: refreshToken }),
+            credentials: 'include'
+        });
 
-    const requestHeaders = new Headers(req.headers);
-    if (accessToken) {
-        requestHeaders.set('Authorization', `Bearer ${accessToken}`);
+        if (!res.ok) {
+            return NextResponse.redirect(new URL('/sign-in', req.url));
+        }
+
+        const data = await res.json();
+        const { access_token, refresh_token } = data.data;
+
+        const response = NextResponse.next();
+
+        response.cookies.set('access_token', access_token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            path: '/',
+            sameSite: 'lax',
+            maxAge: 24 * 60 * 60
+        });
+
+        response.cookies.set('refresh_token', refresh_token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            path: '/',
+            sameSite: 'lax',
+            maxAge: 7 * 24 * 60 * 60
+        });
+        return response;
     }
-
-    const originalRequest = new Request(req.url, {
-        method: req.method,
-        headers: requestHeaders,
-        body: req.body,
-        redirect: 'manual'
-    });
-
-    const response = await fetch(originalRequest);
-
-    if (response.status === 401) {
-        console.log('concak');
-    }
-
-    return NextResponse.next();
 }
 
 export const config = {
-    matcher: ['/sign-in', '/admin/:path*']
+    matcher: ['/sign-in', '/admin/:path*', '/']
 };

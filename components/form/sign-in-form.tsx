@@ -42,8 +42,6 @@ const SignInForm = () => {
             body: JSON.stringify({ username, password })
         });
 
-        console.log('success login', data);
-
         if (data.ok) {
             toast.success('Sign In');
             router.push(ROUTES.HOME);

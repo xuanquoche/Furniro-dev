@@ -7,8 +7,13 @@ import { SidebarTrigger } from '@/components/ui/sidebar';
 import HeaderSide from './header-side';
 import Link from 'next/link';
 import { ROUTES } from '@/constants';
+import { IUserSignInResponse } from '@/models';
 
-const HeaderShop = () => {
+interface HeaderProps {
+    userInformation: IUserSignInResponse;
+}
+
+const HeaderShop = ({ userInformation }: HeaderProps) => {
     return (
         <header className="py-2 px-6 sticky top-0 z-50 left-0 right-0 bg-button-background md:bg-white">
             <div className="md:hidden">
@@ -22,7 +27,7 @@ const HeaderShop = () => {
                     <Image src={LogoIcon} alt="logo" />
                 </Link>
                 <HeaderNav navs={HEADER_NAV} />
-                <HeaderAction actions={HEADER_SHOP_ACTION} />
+                <HeaderAction actions={HEADER_SHOP_ACTION} userInformation={userInformation} />
             </div>
         </header>
     );

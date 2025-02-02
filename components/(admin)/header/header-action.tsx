@@ -8,6 +8,7 @@ import { useClickOutside } from '../../../hooks/use-click-outside';
 import { useRouter } from 'next/navigation';
 import { ROUTES } from '@/constants';
 import DropdownAvatar from '@/components/(shop)/header/dropdown-avatar';
+import { IUserSignInResponse } from '@/models';
 
 interface HeaderActionItem {
     icon: ReactNode;
@@ -16,12 +17,11 @@ interface HeaderActionItem {
 
 interface HeaderActionProps {
     actions: HeaderActionItem[];
+    userInformation: IUserSignInResponse;
 }
 
-export const HeaderAction = ({ actions }: HeaderActionProps) => {
+export const HeaderAction = ({ actions, userInformation }: HeaderActionProps) => {
     const [isShowInputSearch, setIsShowInputSearch] = useState(false);
-
-    // const access_token = localStorage.getItem('access_token');
 
     const router = useRouter();
 
@@ -60,9 +60,13 @@ export const HeaderAction = ({ actions }: HeaderActionProps) => {
                     )}
                 </div>
             ))}
-            {false ? (
+            {userInformation ? (
                 <DropdownAvatar>
-                    <HeaderAvatar src={'https://github.com/shadcn.png'} name={'test'} role="SHOP" />
+                    <HeaderAvatar
+                        src={'https://github.com/shadcn.png'}
+                        name={userInformation.username}
+                        role={userInformation.role}
+                    />
                 </DropdownAvatar>
             ) : (
                 <Button className="ml-4" onClick={() => router.push(ROUTES.SIGN_IN)}>

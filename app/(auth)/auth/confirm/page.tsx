@@ -2,15 +2,15 @@
 
 import { useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { AuthService } from '@/apis/auth/auth';
 import { ROUTES } from '@/constants';
+import { verifyEmail } from '@/apis/auth';
 
 const Confirm = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
     const handleVerifyEmail = async (search: string) => {
         try {
-            await AuthService.verifyEmail(search);
+            await verifyEmail(search);
             router.push(ROUTES.SIGN_IN);
         } catch (error) {
             console.log(error);
