@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button } from '@/components/custom/button';
 import { Form } from '@/components/ui/form';
-import CustomFormField from './form-field';
+import CustomFormField from './input-field';
 import { FcGoogle } from 'react-icons/fc';
 import Link from 'next/link';
 import { ROUTES } from '@/constants';
@@ -20,10 +20,16 @@ const SignInForm = () => {
                 required_error: 'Password is required'
             })
             .min(8, { message: 'Password must be at least 8 characters' })
-            .regex(/[A-Z]/, { message: 'Password must contain an uppercase letter' })
-            .regex(/[a-z]/, { message: 'Password must contain a lowercase letter' })
+            .regex(/[A-Z]/, {
+                message: 'Password must contain an uppercase letter'
+            })
+            .regex(/[a-z]/, {
+                message: 'Password must contain a lowercase letter'
+            })
             .regex(/\d/, { message: 'Password must contain a number' })
-            .regex(/[\W_]/, { message: 'Password must contain a special character' })
+            .regex(/[\W_]/, {
+                message: 'Password must contain a special character'
+            })
     });
 
     const form = useForm<z.infer<typeof formSchema>>({

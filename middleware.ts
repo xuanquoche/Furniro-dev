@@ -14,12 +14,18 @@ export async function middleware(req: NextRequest) {
         return NextResponse.redirect(new URL('/sign-in', req.url));
     }
     if (!accessToken && refreshToken) {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/refresh-token`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'x-refresh-token': 'true' },
-            body: JSON.stringify({ refresh_token: refreshToken }),
-            credentials: 'include'
-        });
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/refresh-token`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-refresh-token': 'true'
+                },
+                body: JSON.stringify({ refresh_token: refreshToken }),
+                credentials: 'include'
+            }
+        );
 
         if (!res.ok) {
             return NextResponse.redirect(new URL('/sign-in', req.url));

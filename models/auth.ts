@@ -20,7 +20,10 @@ export interface ISignUpResponse {
     };
 }
 
-export type IUserSignInResponse = Pick<IUser, 'id' | 'email' | 'username' | 'role' | 'avatar'>;
+export type IUserSignInResponse = Pick<
+    IUser,
+    'id' | 'email' | 'username' | 'role' | 'avatar'
+>;
 
 export interface ISignInResponse {
     id: string;

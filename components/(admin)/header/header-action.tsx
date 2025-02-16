@@ -20,7 +20,10 @@ interface HeaderActionProps {
     userInformation: IUserSignInResponse;
 }
 
-export const HeaderAction = ({ actions, userInformation }: HeaderActionProps) => {
+export const HeaderAction = ({
+    actions,
+    userInformation
+}: HeaderActionProps) => {
     const [isShowInputSearch, setIsShowInputSearch] = useState(false);
 
     const router = useRouter();
@@ -39,7 +42,13 @@ export const HeaderAction = ({ actions, userInformation }: HeaderActionProps) =>
                 <div key={index} className="cursor-pointer flex items-center">
                     {item.title == 'Search' ? (
                         <div className="flex items-center">
-                            {isShowInputSearch && <Input className="p-0 h-6" ref={inputRef} autoFocus />}
+                            {isShowInputSearch && (
+                                <Input
+                                    className="p-0 h-6"
+                                    ref={inputRef}
+                                    autoFocus
+                                />
+                            )}
                             <Button
                                 variant="ghost"
                                 className="hover:bg-background-hover-admin md:px-2 lg:px-3 hover:rounded-xl"
@@ -69,7 +78,10 @@ export const HeaderAction = ({ actions, userInformation }: HeaderActionProps) =>
                     />
                 </DropdownAvatar>
             ) : (
-                <Button className="ml-4" onClick={() => router.push(ROUTES.SIGN_IN)}>
+                <Button
+                    className="ml-4"
+                    onClick={() => router.push(ROUTES.SIGN_IN)}
+                >
                     Login
                 </Button>
             )}

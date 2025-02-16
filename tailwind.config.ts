@@ -26,13 +26,25 @@ export default {
                 'filter-background': 'hsl(var(--filter-background))',
                 'discount-price': 'hsl(var(--discount-price))',
                 'explore-background': 'hsl(var( --explore-background))',
+                'primary-admin': 'hsl(var(--primary-admin))',
+                'background-published': 'hsl(var(--background-published))',
+                'text-published': 'hsl(var(--text-published))',
+                'background-stock': 'hsl(var(--background-stock))',
+                'text-stock': 'hsl(var(--text-stock))',
+                'background-draft': 'hsl(var(--background-draft))',
+                'text-draft': 'hsl(var(--text-draft))',
                 explore: 'hsl(var(--explore))',
                 card: 'hsl(var(--card))',
                 error: 'hsl(var(--error))',
                 gray: {
                     100: 'hsl(var(--gray-100))',
                     300: 'hsl(var(--gray-300))',
-                    400: 'hsl(var(--gray-400))'
+                    400: 'hsl(var(--gray-400))',
+                    800: 'hsl(var(--gray-800))'
+                },
+                red: {
+                    default: 'hsl(var(--red))',
+                    600: 'hsl(var(--red-600))'
                 },
                 sidebar: {
                     DEFAULT: 'hsl(var(--sidebar-background))',

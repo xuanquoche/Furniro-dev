@@ -9,7 +9,12 @@ interface ExploreDescriptionProps {
     onClick: (data: string) => void;
 }
 
-const ExploreDescription = ({ numberOrder, roomType, description, onClick }: ExploreDescriptionProps) => {
+const ExploreDescription = ({
+    numberOrder,
+    roomType,
+    description,
+    onClick
+}: ExploreDescriptionProps) => {
     const formatNumberOrder = (number: number) => {
         let numberFormat = '';
         if (number < 10) {
@@ -25,7 +30,9 @@ const ExploreDescription = ({ numberOrder, roomType, description, onClick }: Exp
                     <p className="font-medium text-xs text-explore">
                         {formatNumberOrder(numberOrder)}--{roomType}
                     </p>
-                    <h3 className="font-semibold text-text-product-name text-xl">{description}</h3>
+                    <h3 className="font-semibold text-text-product-name text-xl">
+                        {description}
+                    </h3>
                 </div>
                 <Button
                     onClick={() => onClick(roomType)}

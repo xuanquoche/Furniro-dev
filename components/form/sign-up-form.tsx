@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button } from '@/components/custom/button';
 import { Form } from '@/components/ui/form';
-import CustomFormField from './form-field';
+import CustomFormField from './input-field';
 import { FcGoogle } from 'react-icons/fc';
 import Link from 'next/link';
 import { ROUTES } from '@/constants';
@@ -36,7 +36,9 @@ const SignUpForm = () => {
                 .regex(/[A-Z]/, {
                     message: 'Password must contain an uppercase letter'
                 })
-                .regex(/[a-z]/, { message: 'Password must contain a lowercase letter' })
+                .regex(/[a-z]/, {
+                    message: 'Password must contain a lowercase letter'
+                })
                 .regex(/\d/, { message: 'Password must contain a number' })
                 .regex(/[\W_]/, {
                     message: 'Password must contain a special character'
@@ -45,7 +47,9 @@ const SignUpForm = () => {
                 .string({
                     required_error: 'Confirm password is required'
                 })
-                .min(8, { message: 'Confirm password is required 8 charactors' })
+                .min(8, {
+                    message: 'Confirm password is required 8 charactors'
+                })
         })
         .refine((data) => data.password === data.confirmPassword, {
             message: 'Passwords do not match',
@@ -70,7 +74,9 @@ const SignUpForm = () => {
             await signUp({ email, first_name, last_name, password, username });
 
             toast.success('Sign up Successful');
-            toast.warning('Verify your email before logging in. Check your inbox for the verification link.');
+            toast.warning(
+                'Verify your email before logging in. Check your inbox for the verification link.'
+            );
             router.push(ROUTES.SIGN_IN);
         } catch (error) {
             toast.error(`Fail to sign up ${error}`);
@@ -103,7 +109,13 @@ const SignUpForm = () => {
                     type="text"
                     placeholder="User Name"
                 />
-                <CustomFormField label="Email" name="email" control={form.control} type="email" placeholder="Email" />
+                <CustomFormField
+                    label="Email"
+                    name="email"
+                    control={form.control}
+                    type="email"
+                    placeholder="Email"
+                />
                 <CustomFormField
                     label="Password"
                     name="password"

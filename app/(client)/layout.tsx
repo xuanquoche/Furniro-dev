@@ -3,7 +3,11 @@ import Footer from '@/components/(shop)/footer/footer';
 import HeaderShop from '@/components/(shop)/header/header';
 import { SidebarProvider } from '@/components/ui/sidebar';
 
-export default async function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({
+    children
+}: {
+    children: React.ReactNode;
+}) {
     const res = await getAccount();
     return (
         <SidebarProvider>

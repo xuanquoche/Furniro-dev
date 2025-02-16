@@ -82,11 +82,21 @@ const ExploreCarousel = () => {
                     showDots
                     itemClass="!w-[300px]"
                     sliderClass="gap-6"
-                    customDot={<CarouselDotCustom image={BEDROOM_SLIDER} />}
+                    customDot={
+                        <CarouselDotCustom
+                            image={BEDROOM_SLIDER}
+                            onClick={handleNextRoomType}
+                            active
+                        />
+                    }
                 >
                     {currentSlider.map((slider, index) => (
                         <div key={index} className="h-full w-full overflow-hidden">
-                            <Image alt={`slider-${index}`} src={slider.image} className="h-full w-full object-cover" />
+                            <Image
+                                alt={`slider-${index}`}
+                                src={slider.image}
+                                className="h-full w-full object-cover"
+                            />
                         </div>
                     ))}
                 </Carousel>

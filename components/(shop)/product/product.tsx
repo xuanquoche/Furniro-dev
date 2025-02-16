@@ -39,7 +39,11 @@ const Product = ({
         >
             <div className="w-full">
                 <div className="relative">
-                    <Image src={thumbnail ? thumbnail : DefaultImage} alt="thumbnail" className="w-full" />
+                    <Image
+                        src={thumbnail ? thumbnail : DefaultImage}
+                        alt="thumbnail"
+                        className="w-full"
+                    />
                     {discountPercent && !isHovered && (
                         <div className="absolute bg-discount-background text-white text-sm flex justify-center items-center rounded-full top-4 right-3 px-2 py-1 w-9 h-9">
                             -{discountPercent}%
@@ -54,10 +58,16 @@ const Product = ({
                 </div>
 
                 <div className="flex flex-col px-3 py-4 bg-card">
-                    <p className="font-semibold text-lg md:text-xl lg:text-2xl text-text-category">{name}</p>
-                    <p className="font-medium text-sm md:text-sm text-text-sort-description">{description}</p>
+                    <p className="font-semibold text-lg md:text-xl lg:text-2xl text-text-category">
+                        {name}
+                    </p>
+                    <p className="font-medium text-sm md:text-sm text-text-sort-description">
+                        {description}
+                    </p>
                     <div className="flex gap-2 justify-start items-center">
-                        <p className="text-sm sm:text-xl md:text-lg text-text-category">{formatPrice(discountPrice)}</p>
+                        <p className="text-sm sm:text-xl md:text-lg text-text-category">
+                            {formatPrice(discountPrice)}
+                        </p>
                         <p className="text-xs sm:text-lg md:text-xs line-through text-discount-price">
                             {formatPrice(originalPrice)}
                         </p>
@@ -66,17 +76,30 @@ const Product = ({
             </div>
             {isHovered && (
                 <div className="flex gap-4 bg-text-product-name/40 absolute z-40 w-full h-full justify-center items-center flex-col">
-                    <Button variant="outline" className="text-button-background font-semibold text-base">
+                    <Button
+                        variant="outline"
+                        className="text-button-background font-semibold text-base"
+                    >
                         Add to cart
                     </Button>
                     <div className="justify-around w-full px-2 flex flex-col xl:flex-row">
-                        <Button variant="ghost" className="flex justify-center items-center lg:text-xs gap-2 p-0">
+                        <Button
+                            variant="ghost"
+                            className="flex justify-center items-center lg:text-xs gap-2 p-0"
+                        >
                             <ShareIcon />
-                            <p className="font-semibold text-base text-white hover:text-button-background">Share</p>
+                            <p className="font-semibold text-base text-white hover:text-button-background">
+                                Share
+                            </p>
                         </Button>
-                        <Button variant="ghost" className="flex justify-center items-center lg:text-xs gap-2 p-0">
+                        <Button
+                            variant="ghost"
+                            className="flex justify-center items-center lg:text-xs gap-2 p-0"
+                        >
                             <CompareIcon />
-                            <p className="font-semibold text-base text-white hover:text-button-background">Compare</p>
+                            <p className="font-semibold text-base text-white hover:text-button-background">
+                                Compare
+                            </p>
                         </Button>
                         <Button
                             variant="ghost"
@@ -84,7 +107,9 @@ const Product = ({
                             onClick={() => setIsLiked(!isLiked)}
                         >
                             <LoveIconMini isActive={isLiked} />
-                            <p className="font-semibold text-base text-white hover:text-button-background">Like</p>
+                            <p className="font-semibold text-base text-white hover:text-button-background">
+                                Like
+                            </p>
                         </Button>
                     </div>
                 </div>

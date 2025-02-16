@@ -10,11 +10,14 @@ const buttonVariants = cva(
     {
         variants: {
             variant: {
-                default: 'bg-button-background text-filter-background shadow hover:bg-button-background/90 rounded-xl',
-                destructive: 'bg-error text-error-foreground shadow-sm hover:bg-error/90',
+                default:
+                    'bg-button-background text-filter-background shadow hover:bg-button-background/90 rounded-xl',
+                destructive:
+                    'bg-error text-error-foreground shadow-sm hover:bg-error/90',
                 outline:
                     'border border-input bg-white shadow-sm hover:bg-white/80 hover:text-buton-background text-buton-background rounded-xl',
-                secondary: 'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
+                secondary:
+                    'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
                 ghost: 'hover:bg-accent hover:text-accent-foreground',
                 link: 'text-primary underline-offset-4 hover:underline'
             },
@@ -68,13 +71,20 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 ref={ref}
                 {...props}
             >
-                {((leftSection && loading) || (!leftSection && !rightSection && loading)) && (
+                {((leftSection && loading) ||
+                    (!leftSection && !rightSection && loading)) && (
                     <LuLoaderCircle className="mr-2 h-4 w-4 animate-spin" />
                 )}
-                {!loading && leftSection && <div className="mr-2">{leftSection}</div>}
+                {!loading && leftSection && (
+                    <div className="mr-2">{leftSection}</div>
+                )}
                 {children}
-                {!loading && rightSection && <div className="ml-2">{rightSection}</div>}
-                {rightSection && loading && <LuLoaderCircle className="ml-2 h-4 w-4 animate-spin" />}
+                {!loading && rightSection && (
+                    <div className="ml-2">{rightSection}</div>
+                )}
+                {rightSection && loading && (
+                    <LuLoaderCircle className="ml-2 h-4 w-4 animate-spin" />
+                )}
             </Comp>
         );
     }

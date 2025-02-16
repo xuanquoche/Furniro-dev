@@ -1,4 +1,4 @@
 export const formatPrice = (number: number) => {
-  const formatNum = number.toLocaleString("vi-Vn");
-  return formatNum;
+    const formatNum = number.toLocaleString('vi-Vn');
+    return formatNum;
 };

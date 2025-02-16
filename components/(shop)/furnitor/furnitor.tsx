@@ -15,11 +15,19 @@ const Furnitor = () => {
             <div className="col-span-2 grid grid-rows-2 w-full gap-y-2">
                 <div className="flex gap-2 justify-end mr-2">
                     <Image src={slider_11} alt="hihi" className="" />
-                    <Image src={slider_10} alt="hihi" className="h-3/4 self-end" />
+                    <Image
+                        src={slider_10}
+                        alt="hihi"
+                        className="h-3/4 self-end"
+                    />
                 </div>
                 <div className="flex gap-2 justify-end mr-2">
                     <Image src={slider_3} alt="hihi" className="" />
-                    <Image src={slider_8} alt="hihi" className="h-3/4 self-start" />
+                    <Image
+                        src={slider_8}
+                        alt="hihi"
+                        className="h-3/4 self-start"
+                    />
                 </div>
             </div>
             <div className="w-full flex items-center">
@@ -27,12 +35,20 @@ const Furnitor = () => {
             </div>
             <div className="col-span-2 grid grid-rows-2 w-full gap-y-2">
                 <div className="flex gap-2 justify-start ml-2">
-                    <Image src={slider_5} alt="hihi" className="h-3/4 self-end" />
+                    <Image
+                        src={slider_5}
+                        alt="hihi"
+                        className="h-3/4 self-end"
+                    />
                     <Image src={slider_4} alt="hihi" className="" />
                 </div>
                 <div className="flex gap-2 justify-start ml-2">
                     <Image src={slider_7} alt="hihi" className="" />
-                    <Image src={slider_6} alt="hihi" className="h-3/4 self-start" />
+                    <Image
+                        src={slider_6}
+                        alt="hihi"
+                        className="h-3/4 self-start"
+                    />
                 </div>
             </div>
         </div>

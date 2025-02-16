@@ -18,9 +18,17 @@
     --gray-300: 0 0% 83%;
     --gray-400: 0 0% 63%;
     --gray-100: 0 0% 88%;
+    --gray-800: 215 28% 17%;
     --background-admin: 241 75% 61%;
     --text-sidebar-admin: 210 11% 52%;
     --background-hover-admin: 240 100% 94%;
+    --background-published: 152 37% 93%;
+    --text-published: 152 83% 29%;
+    --text-stock: 25 86% 48%;
+    --background-stock: 26 84% 95%;
+    --background-draft: 220 11% 95%;
+    --text-draft: 221 13% 46%;
+    --primary-admin: 240 33% 98%;
     --white: 0 0%100%;
     --black: 0 0 0%;
     --black-800: 0 0% 10%;
@@ -29,6 +37,8 @@
     --card: 216 15% 95%;
     --explore: 0 0% 38%;
     --explore-background: 33 60% 97%;
+    --red-600: 0 72% 51%;
+    --red: 0 100% 50%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;

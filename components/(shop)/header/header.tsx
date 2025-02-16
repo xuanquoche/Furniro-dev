@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { ROUTES } from '@/constants';
 import { IUserSignInResponse } from '@/models';
 
-interface HeaderProps {
+export interface HeaderProps {
     userInformation: IUserSignInResponse;
 }
 
@@ -27,7 +27,10 @@ const HeaderShop = ({ userInformation }: HeaderProps) => {
                     <Image src={LogoIcon} alt="logo" />
                 </Link>
                 <HeaderNav navs={HEADER_NAV} />
-                <HeaderAction actions={HEADER_SHOP_ACTION} userInformation={userInformation} />
+                <HeaderAction
+                    actions={HEADER_SHOP_ACTION}
+                    userInformation={userInformation}
+                />
             </div>
         </header>
     );

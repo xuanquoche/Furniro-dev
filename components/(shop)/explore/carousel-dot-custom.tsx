@@ -26,12 +26,15 @@ const CarouselDotCustom = ({ active, onClick, image }: DotProps) => {
                     {
                         'bg-gray-400 text-gray-300': !active,
                         'bg-button-background': active,
-                        'hover:text-gray-300 hover:scale-105 hover:shadow-lg': !active,
+                        'hover:text-gray-300 hover:scale-105 hover:shadow-lg':
+                            !active,
                         'active:scale-95 active:shadow-md': true
                     }
                 )}
             >
-                {image && <div className="w-2 h-2 rounded-full overflow-hidden"></div>}
+                {image && (
+                    <div className="w-2 h-2 rounded-full overflow-hidden"></div>
+                )}
             </Button>
         </div>
     );

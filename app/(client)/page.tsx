@@ -14,7 +14,9 @@ const HomePage = async () => {
                 <Range />
             </div>
             <div className="flex flex-col justify-center items-center">
-                <h2 className="font-bold text-xl md:text-3xl text-center text-text-category mb-5">Our Products</h2>
+                <h2 className="font-bold text-xl md:text-3xl text-center text-text-category mb-5">
+                    Our Products
+                </h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-[80%] gap-10 tiny:gap-5 sm:gap-4 md:gap-4 mb-10">
                     <Product
                         name="Syltherine"
@@ -62,8 +64,12 @@ const HomePage = async () => {
             </div>
             <div className="max-w-[1440px] mx-auto my-10 hidden md:block">
                 <div className="flex justify-center items-center flex-col">
-                    <p className="text-explore font-semibold text-xl">Share your setup with</p>
-                    <h2 className="text-text-product-name font-bold text-4xl">#FuniroFurniture</h2>
+                    <p className="text-explore font-semibold text-xl">
+                        Share your setup with
+                    </p>
+                    <h2 className="text-text-product-name font-bold text-4xl">
+                        #FuniroFurniture
+                    </h2>
                 </div>
                 <Furnitor />
             </div>

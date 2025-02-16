@@ -10,11 +10,10 @@ const RootLayout = async ({
 }>) => {
     return (
         <html lang="en">
-            <body>
+            <body className="h-screen overflow-y-scroll flex flex-col">
                 <CookiesProvider>
                     <Providers>{children}</Providers>
                 </CookiesProvider>
-                ;
                 <ToastContainer position="top-right" autoClose={5000} />
             </body>
         </html>

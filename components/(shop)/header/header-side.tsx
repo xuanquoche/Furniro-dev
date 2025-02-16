@@ -20,17 +20,25 @@ const HeaderSide = () => {
                 <SidebarHeader className="w-full">
                     <SidebarTrigger className="self-end" />
                     <div className="my-4 w-full">
-                        <HeaderSideAvatar name={'test'} src={'https://github.com/shadcn.png'} />
+                        <HeaderSideAvatar
+                            name={'test'}
+                            src={'https://github.com/shadcn.png'}
+                        />
                     </div>
                 </SidebarHeader>
             </div>
             <SidebarContent>
                 <SidebarGroupContent>
                     {HEADER_NAV.map((item) => (
-                        <SidebarMenuItem key={item.title} className="list-none border-b-2 mb-2">
+                        <SidebarMenuItem
+                            key={item.title}
+                            className="list-none border-b-2 mb-2"
+                        >
                             <SidebarMenuButton asChild>
                                 <Link href={item.url}>
-                                    <span className="text-xl">{item.title}</span>
+                                    <span className="text-xl">
+                                        {item.title}
+                                    </span>
                                 </Link>
                             </SidebarMenuButton>
                         </SidebarMenuItem>
