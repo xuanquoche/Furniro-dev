@@ -92,7 +92,7 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
                 original_price: product.original_price,
                 discount: product.discount,
                 color: product.color,
-                categories: product.categories?.name,
+                categories: product.categories?._id,
                 size: product.size,
                 quantity: product.quantity,
                 status: product.status,
@@ -106,15 +106,26 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         const body = {
             ...values,
-            thumbnail: showThumbnail,
+            thumbnail: showThumbnail.length > 0 ? showThumbnail : product?.thumbnail,
             image: showImage
         };
-        console.log('values', body);
-        const response = await addProduct({ url: 'products', method: 'POST', token, body: body });
-        if (response) {
-            console.log('response', response);
-            toast('Product added successfully');
-            router.push(ROUTES.PRODUCT_LIST);
+
+        const isUpdating = isDetail && product?._id;
+        const url = isUpdating ? `products/${product._id}` : 'products';
+        const method = isUpdating ? 'PATCH' : 'POST';
+
+        try {
+            console.log('Submitting:', body);
+
+            const response = await addProduct({ url, method, token, body });
+
+            if (response) {
+                console.log('Response:', response);
+                toast(`Product ${isUpdating ? 'updated' : 'added'} successfully`);
+                router.push(ROUTES.PRODUCT_LIST);
+            }
+        } catch (error) {
+            console.error('Error submitting product:', error);
         }
     };
 
@@ -160,7 +171,10 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
                                                             : product?.thumbnail || ''
                                                     }
                                                     alt="Preview"
-                                                    className="mt-2"
+                                                    className={cn('mt-2', {
+                                                        hidden:
+                                                            !isDetail && showThumbnail.length < 1
+                                                    })}
                                                     width={200}
                                                     height={200}
                                                 />
@@ -214,7 +228,7 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
                                                         : product?.images.map((item, index) => (
                                                               <Image
                                                                   key={index}
-                                                                  src={product?.thumbnail || ''}
+                                                                  src={item || ''}
                                                                   alt="Preview"
                                                                   className="mt-2"
                                                                   width={200}
@@ -414,13 +428,23 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
                         </div>
                     </div>
                 </div>
-                <Button
-                    type="submit"
-                    className="bg-background-admin hover:bg-background-admin/80 w-20 self-end"
-                    loading={form.formState.isSubmitting}
-                >
-                    Save
-                </Button>
+                {!isDetail ? (
+                    <Button
+                        type="submit"
+                        className="bg-background-admin hover:bg-background-admin/80 w-20 self-end"
+                        loading={form.formState.isSubmitting}
+                    >
+                        Save
+                    </Button>
+                ) : (
+                    <Button
+                        type="submit"
+                        className="bg-background-admin hover:bg-background-admin/80 w-20 self-end"
+                        loading={form.formState.isSubmitting}
+                    >
+                        Update
+                    </Button>
+                )}
             </form>
         </Form>
     );

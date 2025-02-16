@@ -15,6 +15,7 @@ export interface IProduct {
     color: string;
     categories: {
         name: string;
+        _id: string;
     };
     createdBy: {
         _id: string;
