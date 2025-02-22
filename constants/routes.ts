@@ -6,6 +6,7 @@ export const ROUTES = {
     SHOP: '/shop-information',
     ABOUT: '/about',
     CONTACT: '/contact',
+    CLIENT_PRODUCT_LIST: '/product-list',
 
     // admin dashboard
     ADMIN_DASHBOARD: '/admin/dashboard',

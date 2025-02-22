@@ -1,1 +1,2 @@
-export * from './add-image';
+export * from './add-thumbnail';
+export * from './add-images';

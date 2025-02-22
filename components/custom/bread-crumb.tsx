@@ -1,8 +1,11 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+interface BreadcrumbProps {
+    className?: string;
+}
 
-const Breadcrumb = () => {
+const Breadcrumb = ({ className }: BreadcrumbProps) => {
     const pathname = usePathname();
     const pathParts = pathname.split('/').filter(Boolean);
 
@@ -14,7 +17,7 @@ const Breadcrumb = () => {
     };
 
     return (
-        <nav className="text-gray-600 text-sm">
+        <nav className={`${className} text-gray-600 text-sm`}>
             <ol className="flex items-center space-x-2">
                 {pathParts.map((part, index) => {
                     const isLast = index === pathParts.length - 1;

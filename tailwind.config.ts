@@ -64,7 +64,8 @@ export default {
                     DEFAULT: 'hsl(var(--black))',
                     800: 'hsl(var(--black-800))',
                     500: 'hsl(var(--black-500))'
-                }
+                },
+                standard: 'hsl(var(--standard))'
             },
             fontFamily: {
                 poppins: ['Poppins', 'sans-serif']

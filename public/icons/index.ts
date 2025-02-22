@@ -17,3 +17,6 @@ export { default as LoveIconMini } from './love-icon-mini';
 export { default as ShareIcon } from './share-icon';
 export { default as ArrowIcon } from './arrow-icon';
 export { default as ExportIcon } from './export-icon';
+export { default as CupIcon } from './cup-icon';
+export { default as FeatureIcon } from './feature-icon';
+export { default as HandIcon } from './hand-icon';

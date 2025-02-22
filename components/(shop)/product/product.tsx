@@ -6,8 +6,10 @@ import { formatPrice } from '@/utils/split-price';
 import { useState } from 'react';
 import { Button } from '@/components/custom/button';
 import { ShareIcon, CompareIcon, LoveIconMini } from '@/public/icons';
+import {useRouter} from 'next/navigation'
 
 interface ProductProps {
+    id?: string;
     name?: string;
     description?: string;
     originalPrice: number;
@@ -18,16 +20,19 @@ interface ProductProps {
 }
 
 const Product = ({
-    name,
-    description,
+    name = '',
+    description = '',
     originalPrice,
     discountPrice,
     discountPercent,
     isNew,
-    thumbnail
+    thumbnail,
+    id
 }: ProductProps) => {
     const [isHovered, setIsHovered] = useState<boolean>(false);
     const [isLiked, setIsLiked] = useState<boolean>(false);
+
+    const router = useRouter()
 
     return (
         <div
@@ -42,9 +47,12 @@ const Product = ({
                     <Image
                         src={thumbnail ? thumbnail : DefaultImage}
                         alt="thumbnail"
-                        className="w-full"
+                        className="w-full max-h-[115px] md:min-h-[220px] lg:max-h-[222px] object-cover"
+                        width={400}
+                        height={222}
+                        layout="responsive"
                     />
-                    {discountPercent && !isHovered && (
+                    {discountPercent != 0 && !isHovered && (
                         <div className="absolute bg-discount-background text-white text-sm flex justify-center items-center rounded-full top-4 right-3 px-2 py-1 w-9 h-9">
                             -{discountPercent}%
                         </div>
@@ -59,10 +67,12 @@ const Product = ({
 
                 <div className="flex flex-col px-3 py-4 bg-card">
                     <p className="font-semibold text-lg md:text-xl lg:text-2xl text-text-category">
-                        {name}
+                        {(name ?? '').length > 10 ? name.slice(0, 10) + '...' : name}
                     </p>
-                    <p className="font-medium text-sm md:text-sm text-text-sort-description">
-                        {description}
+                    <p className="font-medium text-sm md:text-sm text-text-sort-description line-clamp-3">
+                        {(description ?? '').length > 50
+                            ? description.slice(0, 90) + ' ...'
+                            : description}
                     </p>
                     <div className="flex gap-2 justify-start items-center">
                         <p className="text-sm sm:text-xl md:text-lg text-text-category">
@@ -79,6 +89,7 @@ const Product = ({
                     <Button
                         variant="outline"
                         className="text-button-background font-semibold text-base"
+                        onClick={() => router.push(`product-detail/${id}`)}
                     >
                         Add to cart
                     </Button>

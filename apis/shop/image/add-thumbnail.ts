@@ -10,7 +10,7 @@ interface ImageResponse {
     };
 }
 
-export const addImage = async ({ body }: AddProductProps): Promise<ImageResponse> => {
+export const addThumbnail = async ({ body }: AddProductProps): Promise<ImageResponse> => {
     try {
         const formData = new FormData();
         formData.append('file', body.file);

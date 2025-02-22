@@ -9,6 +9,7 @@ import { Button } from '@/components/custom/button';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import Image from 'next/image';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const colorStatus = (status: PaymentStatus) => {
     switch (status) {
@@ -59,7 +60,7 @@ export const columns: ColumnDef<{
         header: 'Product',
         cell: ({ row }) => {
             return (
-                <div className="flex gap-2 items-center justify-center">
+                <div className="grid grid-cols-2 gap-2 items-center justify-center">
                     <Image
                         src={row.original.thumbnail}
                         alt="thumbnail"
@@ -68,7 +69,21 @@ export const columns: ColumnDef<{
                         className="object-cover"
                     />
                     <div className="flex flex-col gap-2">
-                        <p className="font-semibold">{row.getValue('product')}</p>
+                        <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <p className="cursor-pointer">
+                                        {(row.getValue('product') as string).length > 10
+                                            ? (row.getValue('product') as string).slice(0, 10) +
+                                              '...'
+                                            : row.getValue('product')}
+                                    </p>
+                                </TooltipTrigger>
+                                <TooltipContent className="">
+                                    <p>{row.getValue('product') as string}</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
                         <p>{row.original.quantity}</p>
                     </div>
                 </div>

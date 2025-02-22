@@ -83,7 +83,6 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
     });
 
     useEffect(() => {
-        console.log('product', product);
         if (product != null) {
             form.reset({
                 product_name: product.product_name,
@@ -115,12 +114,9 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
         const method = isUpdating ? 'PATCH' : 'POST';
 
         try {
-            console.log('Submitting:', body);
-
             const response = await addProduct({ url, method, token, body });
 
             if (response) {
-                console.log('Response:', response);
                 toast(`Product ${isUpdating ? 'updated' : 'added'} successfully`);
                 router.push(ROUTES.PRODUCT_LIST);
             }
@@ -164,20 +160,27 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
                                         </FormLabel>
                                         <FormControl>
                                             <div className="bg-primary-admin flex p-8 justify-center items-center flex-col gap-4">
-                                                <Image
-                                                    src={
+                                                {(() => {
+                                                    const imageSrc =
                                                         showThumbnail && !isDetail
                                                             ? showThumbnail
-                                                            : product?.thumbnail || ''
-                                                    }
-                                                    alt="Preview"
-                                                    className={cn('mt-2', {
-                                                        hidden:
-                                                            !isDetail && showThumbnail.length < 1
-                                                    })}
-                                                    width={200}
-                                                    height={200}
-                                                />
+                                                            : (product?.thumbnail ?? null);
+
+                                                    return imageSrc ? (
+                                                        <Image
+                                                            src={imageSrc}
+                                                            alt="Preview"
+                                                            className={cn('mt-2', {
+                                                                hidden:
+                                                                    !isDetail &&
+                                                                    showThumbnail.length < 1
+                                                            })}
+                                                            width={200}
+                                                            height={200}
+                                                        />
+                                                    ) : null;
+                                                })()}
+
                                                 <div
                                                     className={cn(
                                                         'p-2 rounded-full bg-background-hover-admin',
