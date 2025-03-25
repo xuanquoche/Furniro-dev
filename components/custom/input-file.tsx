@@ -37,7 +37,6 @@ export function CustomFileInput<T extends FieldValues>({
         const fileArray = Array.from(files);
         setSelectedFiles((prevFiles) => [...prevFiles, ...fileArray]);
         const fileUrls = fileArray.map((file) => URL.createObjectURL(file));
-        console.log('files', files);
 
         if (name === 'thumbnail') {
             if (setShowThumbnail) {

@@ -19,10 +19,13 @@ export const addImage = async ({ body }: AddProductProps): Promise<ImageResponse
         for (const pair of formData.entries()) {
             console.log(pair[0], pair[1]);
         }
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/file-upload/upload`, {
-            method: 'POST',
-            body: formData
-        });
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_API_BASE_URL}/file-upload/upload-multiple`,
+            {
+                method: 'POST',
+                body: formData
+            }
+        );
 
         if (!response.ok) {
             throw new Error(`Error ${response.status}: ${response.statusText}`);

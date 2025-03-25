@@ -61,7 +61,7 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
         status: z.nativeEnum(PaymentStatus, {
             required_error: 'Status is required'
         }),
-        image: z.array(z.string().url('Invalid image URL')).optional()
+        images: z.array(z.string().url('Invalid image URL')).optional()
     });
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -78,7 +78,7 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
             quantity: 0,
             status: PaymentStatus.DRAFT,
             brand: '',
-            image: []
+            images: []
         }
     });
 
@@ -96,7 +96,7 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
                 quantity: product.quantity,
                 status: product.status,
                 brand: product.brand,
-                image: product.images
+                images: product.images
             });
             setIsDetail(true);
         }
@@ -106,7 +106,7 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
         const body = {
             ...values,
             thumbnail: showThumbnail.length > 0 ? showThumbnail : product?.thumbnail,
-            image: showImage
+            image: showImage.length > 0 ? showImage : product?.images
         };
 
         const isUpdating = isDetail && product?._id;
@@ -115,7 +115,8 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
 
         try {
             const response = await addProduct({ url, method, token, body });
-
+            console.log('boyd', body);
+            console.log('response,', response);
             if (response) {
                 toast(`Product ${isUpdating ? 'updated' : 'added'} successfully`);
                 router.push(ROUTES.PRODUCT_LIST);
@@ -206,7 +207,7 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
                             ></FormField>
 
                             <FormField
-                                name="image"
+                                name="images"
                                 control={form.control}
                                 render={({}) => (
                                     <FormItem>
@@ -251,7 +252,7 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
                                                     Drag and drop image here, or click add image
                                                 </p>
                                                 <CustomFileInput
-                                                    name="image"
+                                                    name="images"
                                                     control={form.control}
                                                     setShowImage={setShowImage}
                                                 />

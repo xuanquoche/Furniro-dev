@@ -10,7 +10,6 @@ export default async function AddProduct({ params }: { params: Promise<{ id: str
     const token = (await cookies()).get('access_token');
     const productId = (await params).id;
     const product = await getProductDetail({ productId: productId });
-    console.log('product id', productId);
 
     return (
         <div>
