@@ -24,7 +24,7 @@ export const addThumbnail = async ({ body }: AddProductProps): Promise<ImageResp
         }
 
         const data = await response.json();
-        const filePath = `${process.env.NEXT_PUBLIC_API}/${data.data.filePath}`;
+        const filePath = data.data.filePath;
         return {
             statusCode: response.status,
             message: 'File uploaded successfully',

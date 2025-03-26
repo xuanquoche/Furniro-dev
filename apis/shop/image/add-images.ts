@@ -32,9 +32,7 @@ export const addImage = async ({ body }: AddProductProps): Promise<ImageResponse
         }
 
         const data = await response.json();
-        const filePath = data.data.filePath.map(
-            (path: string) => `${process.env.NEXT_PUBLIC_API}/${path}`
-        );
+        const filePath = data.data.filePath.map((path: string) => path);
         return {
             statusCode: response.status,
             message: 'File uploaded successfully',
