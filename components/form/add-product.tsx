@@ -1,6 +1,6 @@
 'use client';
 
-import { addProduct, ICategory } from '@/apis/shop';
+import { ICategory } from '@/apis/shop';
 import { PaymentStatus, ProductSize } from '@/constants/enum/status-enum';
 import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -24,11 +24,10 @@ import { IProduct } from '@/types';
 
 interface AddProductFormProps {
     categories: ICategory[];
-    token: string;
     product: IProduct | null;
 }
 
-const AddProductForm = ({ categories, token, product }: AddProductFormProps) => {
+const AddProductForm = ({ categories, product }: AddProductFormProps) => {
     const [showThumbnail, setShowThumbnail] = useState<string>('');
     const [showImage, setShowImage] = useState<string[]>([]);
     const [originPrice, setOriginPrice] = useState<number>(0);
@@ -100,7 +99,7 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
             });
             setIsDetail(true);
         }
-    }, [product, form, isDetail]);
+    }, [product, form]);
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         const body = {
@@ -110,16 +109,27 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
         };
 
         const isUpdating = isDetail && product?._id;
-        const url = isUpdating ? `products/${product._id}` : 'products';
-        const method = isUpdating ? 'PATCH' : 'POST';
 
         try {
-            const response = await addProduct({ url, method, token, body });
-            console.log('boyd', body);
-            console.log('response,', response);
-            if (response) {
-                toast(`Product ${isUpdating ? 'updated' : 'added'} successfully`);
-                router.push(ROUTES.PRODUCT_LIST);
+            if (!isUpdating) {
+                const response = await fetch(`/api/shop/add-product`, {
+                    body: JSON.stringify(body)
+                });
+
+                if (response.status === 201) {
+                    toast.success('Product added successfully');
+                    router.push(ROUTES.PRODUCT_LIST);
+                }
+            } else {
+                const response = await fetch(`/api/shop/update-product/${product._id}`, {
+                    method: 'PATCH',
+                    body: JSON.stringify(body)
+                });
+
+                if (response.status === 200) {
+                    toast.success('Product updated successfully');
+                    router.push(ROUTES.PRODUCT_LIST);
+                }
             }
         } catch (error) {
             console.error('Error submitting product:', error);
@@ -128,7 +138,13 @@ const AddProductForm = ({ categories, token, product }: AddProductFormProps) => 
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 flex flex-col">
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    form.handleSubmit(onSubmit)(e);
+                }}
+                className="space-y-4 flex flex-col"
+            >
                 <div className="grid grid-cols-4 gap-4">
                     <div className="col-span-3 gap-3">
                         <div className="bg-white px-4 py-4 rounded-xl mb-5">

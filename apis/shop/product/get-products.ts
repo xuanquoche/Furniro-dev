@@ -1,4 +1,4 @@
-import { customFetchClient } from '@/apis/customFetchClient';
+import { customFetchClient } from '@/lib/customFetchClient';
 import { fetchWithAuth } from '@/app/fetchWithAuth';
 import { IProduct } from '@/types';
 

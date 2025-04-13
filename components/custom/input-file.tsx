@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '../ui/input';
 import { FieldValues } from 'react-hook-form';
 import { addImage, addThumbnail } from '@/apis/shop';
+import { toast } from 'react-toastify';
 
 interface CustomFileInputProps<T extends FieldValues> {
     name: Path<T>;
@@ -45,8 +46,9 @@ export function CustomFileInput<T extends FieldValues>({
                 setShowThumbnail(uploadImage.data.filePath);
                 field.onChange(uploadImage.data.filePath);
             }
-        } else if (name === 'image') {
+        } else if (name === 'images') {
             const updatedImages = [...(Array.isArray(field.value) ? field.value : []), ...fileUrls];
+            console.log('updatedImages', updatedImages);
             if (setShowImage) {
                 setShowImage(updatedImages);
                 field.onChange(updatedImages);
@@ -54,8 +56,11 @@ export function CustomFileInput<T extends FieldValues>({
         }
     };
     const handleUploadImages = async () => {
-        if (selectedFiles.length > 3) {
+        if (selectedFiles.length > 2) {
             const upLoadImage = await addImage({ body: { file: selectedFiles } });
+            if (upLoadImage.statusCode == 201) {
+                toast.success('Image uploaded successfully');
+            }
             setShowImage?.(upLoadImage.data.filePath);
         }
     };
@@ -73,10 +78,10 @@ export function CustomFileInput<T extends FieldValues>({
                 />
 
                 <Button
-                    onClick={selectedFiles.length > 3 ? handleUploadImages : handleClick}
+                    onClick={selectedFiles.length > 2 ? handleUploadImages : handleClick}
                     className="bg-background-hover-admin text-background-admin w-28 rounded-xl"
                 >
-                    {selectedFiles.length > 3 ? 'Upload Images' : 'Add image'}
+                    {selectedFiles.length > 2 ? 'Upload Images' : 'Add image'}
                 </Button>
             </div>
         </div>

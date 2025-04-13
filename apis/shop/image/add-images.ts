@@ -16,9 +16,6 @@ export const addImage = async ({ body }: AddProductProps): Promise<ImageResponse
         body.file.forEach((file) => {
             formData.append('files', file);
         });
-        for (const pair of formData.entries()) {
-            console.log(pair[0], pair[1]);
-        }
         const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_BASE_URL}/file-upload/upload-multiple`,
             {
@@ -32,7 +29,7 @@ export const addImage = async ({ body }: AddProductProps): Promise<ImageResponse
         }
 
         const data = await response.json();
-        const filePath = data.data.filePath.map((path: string) => path);
+        const filePath = data?.data?.filePaths.map((path: string) => path);
         return {
             statusCode: response.status,
             message: 'File uploaded successfully',
@@ -41,7 +38,7 @@ export const addImage = async ({ body }: AddProductProps): Promise<ImageResponse
             }
         };
     } catch (error) {
-        console.error('Error adding product:', error);
+        console.error('Error adding images:', error);
         throw error;
     }
 };

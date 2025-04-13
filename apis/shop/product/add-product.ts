@@ -1,4 +1,4 @@
-import { customFetchClient } from '@/apis/customFetchClient';
+import { customFetchClient } from '@/lib/customFetchClient';
 import { PaymentStatus } from '@/constants/enum/status-enum';
 
 interface IProduct {
